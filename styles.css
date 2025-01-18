@@ -1,0 +1,202 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    display: flex; /*this is in charge of making the nav and section, in this example, next tp each other instead of on top of each other*/
+    /*the command above can be thought of as flexible containers, the default for flexable containers is to be stacked in a row (like boxes in a truck)*/
+    /*btw unrelated but the command "flex-direction: column;" sets it to columns instead of rows, they'll be on top of each other instead of next to each other. and when you have it set to a column instead of a row, the aligning of "align-items" and the "justify-contetnt" swaps, as in you have to think about it on a different axis*/
+    align-items: center; /*centers it vertiacally*/
+    justify-content: space-between; /*this is in charge of centering horizontally*/
+    padding: 11px 25px;
+}
+
+.rightHeaderText{
+    font-size: 13px;
+}
+
+header section img {
+    max-width: 35px;
+    border-radius: 50%;
+    border: 2px lightgray;
+}
+
+header section img:hover{
+    box-shadow: 1px 1px 8px 2px lightgrey;
+}
+
+.dotsDiv{
+    display: flex;
+    gap: 1px;
+    font-size: 18px;
+}
+
+nav, section{
+    /*we want the stuff in the header to be nextto each other
+    to do this, we target the nav and section tages ("About" and "Store" are in a nav and "Gmail" and "Images" are in a section)*/
+    display: flex;
+    align-items: center;
+    /*we dont have to justify content because they need to be next to each other*/
+    gap: 18px; /*adds space between the elements*/
+}
+
+.blacklink{ /*this is a class rather than a tag so we have to start it with a period*/
+    color: black;
+}
+
+a{
+    text-decoration: unset; /*this will get rid of the default link stuff (i didnt want an underline)*/
+    font-size: 0.9em;
+}
+
+a:hover{ /*this will apply to all the anchor(a) tags when you hover over them*/
+    text-decoration: underline;
+}
+
+body{
+    background: #ffffff;
+    color: black;
+    /* padding: 14px; this surrounds the body */
+    min-height: 100vh; /*this means to use 100% of the veiw height, as in use the whole page*/
+    /*now i want the google to be in the middle*/
+    display: flex;
+    flex-direction: column;
+    /*i set it to flex so that i can use its features*/
+    gap: 14px; /*this sets space between all the seperate things in body (header, main, and footer), all three of these are direct children of body*/
+    font-family: sans-serif, 'Times New Roman', 'Times New Roman', Times, serif;
+}
+
+main{
+    flex: 1; /* this lets main be space greedy, as in it takes up most of the screen (the lower the flex number, the more space it takes up)
+    we can use flex since main's parent (body) was already set to a flex display*/
+    display: flex; /*now i set main itself to be flex*/
+    flex-direction: column;
+    align-items: center; /*vertical center*/
+    justify-content: center; /*horizontal center*/
+    gap: 24px;
+    padding: 0px 14px; /*adds horizontal padding to main*/
+    padding-bottom: 20%;
+}
+
+.headerText{
+    font-size: 4em;
+    /*for font sizes you can use px, em, ren*/
+    font-family: 'Times New Roman', Times, serif;
+    color: cornflowerblue;
+}
+
+.searchBar{
+    display: flex;
+    width: 67%; /*this sets the width to 100% of the screen, its better to use percentages instead of numbers so that it works well with all screen*/
+    max-width: 700px; /*so that after a certain point it stops getting bigger*/
+    margin: 0 auto; /*margin is in charge of exterior spacing, as in the spacing between elements in a container*/
+    /*^ first parameter is the vertical spacing and the second is the horizontal margin, if you just have one param it'll set the margin for both*/
+    gap: 14px;
+    border: 1px solid lightgray; /*set a solid border 1px thick to be light grey*/
+    padding: 14px;
+    border-radius: 24px; /*this is in charge of making the border rounded*/
+}
+
+.searchBar:hover{
+    border-color: transparent;
+    box-shadow: -1px 1px 5px 1px lightgrey;
+    /*first param controls thr right and left fade (horizontal)
+    second controls the up and down fade (vertical)
+    thrid param controls the blur opacity [optional]
+    fourth param controls how far the blur stretches out [optional]
+    last param is the color [optional]*/
+}
+
+.iconBtn{
+    background: transparent;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+
+.iconBtnDiv{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+input {
+    background: transparent;
+    outline: none;
+    border: unset;
+    /*color: black;*/
+    flex: 1; /*make the search bar take up most of the space*/
+}
+
+.searchBtnDiv{
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.searchBtnDiv button{
+    padding: 9px 14px;
+    border-radius: 4px;
+    background: #F8F9FA;
+    border: 1px solid transparent;
+    color: rgb(66, 66, 66);
+    font-size: 14px;
+}
+
+.searchBtnDiv button:hover{
+    border: 1px solid darkgray;
+    cursor: pointer;
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    background: #F2F2F2;
+}
+
+footer>section{
+    /*footer > section tells it to select the section children of footer*/
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10%; /*this is the space between the two sections*/
+}
+
+footer>section:first-child{
+    gap: 5px;
+}
+
+footer>section:last-child{
+    /* this refers to the last section child of footer, ie the links at the very bottom */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footerLinks{
+    display: flex;
+    align-items: center;
+    gap: 14px; /*peep that gap only works when the display is flex*/
+}
+
+.footerLinks a{
+    cursor: pointer;
+    color: gr;
+}
+
+/*this is fixing the footer not adaping to sizes properly
+make sure this stays at the bottom of the document*/
+@media (min-width: 540px){
+    /* so the problem is that when I set it to a mobile view, the bottom links in the footer squish up...
+    normally to fix this we'd change the footer>section:last-child to have a flex-direction of culumn but...
+    the problem with that is that when we switch back to the pc view, it looks silly sooo...
+    we can use @media to fix this issue */
+    footer>section:last-child{
+        flex-direction: row;
+        /* this sets the flex-direction to row after the width passes 540px */
+    }
+}
